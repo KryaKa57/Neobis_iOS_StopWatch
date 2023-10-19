@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Neobis_iOS_StopWatch" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="3u8-1v-ndn">
+                                <rect key="frame" x="183" y="125.5" width="48.5" height="53"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <imageReference key="image" image="stopwatch" catalog="system" symbolScale="large" variableValue="1"/>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="32" scale="large" weight="medium"/>
+                            </imageView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Ysk-ic-yXN">
+                                <rect key="frame" x="120.5" y="190.5" width="173" height="32"/>
+                                <segments>
+                                    <segment title="Timer"/>
+                                    <segment title="StopWatch"/>
+                                </segments>
+                                <connections>
+                                    <action selector="switchFuntionality:" destination="BYZ-38-t0r" eventType="valueChanged" id="X2n-90-L9K"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hDl-B6-Tn8">
+                                <rect key="frame" x="99.5" y="277" width="215" height="57.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="48"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="uiH-gc-ZSp">
+                                <rect key="frame" x="89.5" y="661.5" width="235" height="57"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hYY-2f-1aV">
+                                        <rect key="frame" x="0.0" y="0.0" width="57" height="57"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="hYY-2f-1aV" secondAttribute="height" multiplier="50:50" id="W0X-jd-J4G"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="stop.fill" catalog="system">
+                                            <color key="titleColor" red="0.41176474089999998" green="0.73725497719999999" blue="0.89411771299999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
+                                        <buttonConfiguration key="configuration" style="plain">
+                                            <imageReference key="image" image="stop.fill" catalog="system" symbolScale="large"/>
+                                            <color key="baseForegroundColor" red="0.41176474089999998" green="0.73725497719999999" blue="0.89411771299999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nCv-Qi-2fT">
+                                        <rect key="frame" x="89" y="0.0" width="57" height="57"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="nCv-Qi-2fT" secondAttribute="height" multiplier="50:50" id="R1I-0a-0bV"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain">
+                                            <imageReference key="image" image="pause" catalog="system" symbolScale="large"/>
+                                            <color key="baseForegroundColor" red="0.41176474089999998" green="0.73725497719999999" blue="0.89411771299999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tI4-hl-VdO">
+                                        <rect key="frame" x="178" y="0.0" width="57" height="57"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="tI4-hl-VdO" secondAttribute="height" multiplier="50:50" id="uei-Zk-oYf"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain">
+                                            <imageReference key="image" image="play.fill" catalog="system" symbolScale="large"/>
+                                            <color key="baseForegroundColor" red="0.41176474089999998" green="0.73725497719999999" blue="0.89411771299999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <pickerView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i2e-67-V3C">
+                                <rect key="frame" x="32" y="359" width="350" height="216"/>
+                            </pickerView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" red="0.41176474089999998" green="0.73725497719999999" blue="0.89411771299999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="tI4-hl-VdO" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.0635861" id="0SB-h9-Eg2"/>
+                            <constraint firstItem="3u8-1v-ndn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1d8-pJ-auP"/>
+                            <constraint firstItem="i2e-67-V3C" firstAttribute="top" secondItem="hDl-B6-Tn8" secondAttribute="bottom" multiplier="1.05" constant="8" symbolic="YES" id="1yp-Zg-lro"/>
+                            <constraint firstItem="uiH-gc-ZSp" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="4VM-01-6xy"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="uiH-gc-ZSp" secondAttribute="bottom" multiplier="1.2" priority="1" id="B5u-QO-pTw"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="i2e-67-V3C" secondAttribute="trailing" constant="32" id="BoT-Bt-nbC"/>
+                            <constraint firstItem="uiH-gc-ZSp" firstAttribute="top" secondItem="i2e-67-V3C" secondAttribute="bottom" multiplier="1.15" id="CLu-Si-Kaa"/>
+                            <constraint firstItem="i2e-67-V3C" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ILA-pN-1dX"/>
+                            <constraint firstItem="hDl-B6-Tn8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Wgd-Hl-tZB"/>
+                            <constraint firstItem="hYY-2f-1aV" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.0635861" id="aUX-zk-1Rl"/>
+                            <constraint firstItem="Ysk-ic-yXN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="adh-fZ-zfj"/>
+                            <constraint firstItem="i2e-67-V3C" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="byZ-BH-sl9"/>
+                            <constraint firstItem="hDl-B6-Tn8" firstAttribute="top" secondItem="Ysk-ic-yXN" secondAttribute="bottom" multiplier="1.25" id="cBW-F5-ZPc"/>
+                            <constraint firstItem="3u8-1v-ndn" firstAttribute="top" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="32" id="eoU-NY-fML"/>
+                            <constraint firstItem="nCv-Qi-2fT" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.0635861" id="fn5-cf-wGS"/>
+                            <constraint firstItem="Ysk-ic-yXN" firstAttribute="top" secondItem="3u8-1v-ndn" secondAttribute="bottom" multiplier="1.1" id="pRP-ng-RaW"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="pauseButton" destination="nCv-Qi-2fT" id="3mL-Ch-cFJ"/>
+                        <outlet property="playButton" destination="tI4-hl-VdO" id="pzK-32-fPD"/>
+                        <outlet property="stopButton" destination="hYY-2f-1aV" id="wFH-gj-MIK"/>
+                        <outlet property="switchSegmentedControl" destination="Ysk-ic-yXN" id="3Se-h6-mON"/>
+                        <outlet property="timeLabel" destination="hDl-B6-Tn8" id="cPk-KY-wrw"/>
+                        <outlet property="timePickerView" destination="i2e-67-V3C" id="QD4-i0-1Ww"/>
+                        <outlet property="view" destination="Ysk-ic-yXN" id="ALF-SQ-Q2e"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="101.44927536231884" y="3.3482142857142856"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="pause" catalog="system" width="88" height="128"/>
+        <image name="play.fill" catalog="system" width="117" height="128"/>
+        <image name="stop.fill" catalog="system" width="128" height="113"/>
+        <image name="stopwatch" catalog="system" width="121" height="128"/>
+    </resources>
+</document>
