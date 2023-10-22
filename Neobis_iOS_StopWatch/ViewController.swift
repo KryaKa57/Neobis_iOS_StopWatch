@@ -22,15 +22,17 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     
     @IBOutlet weak var switchSegmentedControl: UISegmentedControl!
     
-    var currentFunctionality = Functionality.Timer
+    var currentFunctionality = Functionality.Timer // Текущий функционал: Таймер или секундомер
     
     var timer: Timer!
     
-    var startedTime: Date!
-    var timeOnRunning: DateComponents!
+    var startedTime: Date! // Дата и время начала записи времени
+    var timeOnRunning: DateComponents! // Количество времени работы функционала
     
-    var isTimerRunning = false
-    var isTimerPaused = false
+    var isTimerRunning = false // Работает ли таймер
+    var isTimerPaused = false // На паузе ли таймер
+    
+    var givenTime: TimeInterval! // Заданное время секундомера
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,14 +47,17 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
             timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(UpdateTime), userInfo: nil, repeats: true)
             isTimerRunning = true
         }
+        if currentFunctionality == .StopWatch {
+            timePickerView.isHidden = true
+        }
     }
     
     @IBAction func pauseButtonTapped(_ sender: UIButton) {
         if !isTimerPaused && isTimerRunning {
             timeOnRunning = Calendar.current.dateComponents([.day, .hour, .minute, .second], from: Date(), to: (startedTime))
-            
             timer.invalidate()
             isTimerPaused = true
+            
         } else if isTimerPaused {
             startedTime = Calendar.current.date(byAdding: timeOnRunning, to: Date())
             timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(UpdateTime), userInfo: nil, repeats: true)
@@ -66,16 +71,19 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         isTimerPaused = false
         timeOnRunning = nil
         timerLabel.text = "00:00:00"
+        
+        if currentFunctionality == .StopWatch {
+            timePickerView.isHidden = false
+        }
     }
-    
-    
     
     @objc func UpdateTime() {
         let userCalendar = Calendar.current
         let currentTime = Date()
         
-        // Change the seconds to days, hours, minutes and seconds
-        let timeLeft = userCalendar.dateComponents([.day, .hour, .minute, .second], from: (startedTime), to: currentTime)
+        
+        let timeLeft = userCalendar.dateComponents([.day, .hour, .minute, .second], from: (currentFunctionality == .Timer ? startedTime : currentTime), to: currentFunctionality == .Timer ? currentTime : startedTime + givenTime)
+        
         
         // Display Countdown
         timerLabel.text = "\(String(format: "%02d",timeLeft.hour!)):\(String(format: "%02d",timeLeft.minute!)):\(String(format: "%02d",timeLeft.second!))"
@@ -83,9 +91,11 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     
     @IBAction func switchFuntionality(_ sender: Any) {
         if (currentFunctionality == Functionality.Timer) {
+            stopButtonTapped(stopButton)
             currentFunctionality = Functionality.StopWatch
             timePickerView.isHidden = false
         } else {
+            stopButtonTapped(stopButton)
             currentFunctionality = Functionality.Timer
             timePickerView.isHidden = true
         }
@@ -108,11 +118,12 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let hour = String(format: "%02d", Int(pickerView.selectedRow(inComponent: 0)))
-        let minute = String(format: "%02d", Int(pickerView.selectedRow(inComponent: 1)))
-        let second = String(format: "%02d", Int(pickerView.selectedRow(inComponent: 2)))
+        let hour = Int(pickerView.selectedRow(inComponent: 0))
+        let minute = Int(pickerView.selectedRow(inComponent: 1))
+        let second = Int(pickerView.selectedRow(inComponent: 2))
         
-        timerLabel.text = "\(hour):\(minute):\(second)"
+        timerLabel.text = "\(String(format: "%02d", hour)):\(String(format: "%02d", minute)):\(String(format: "%02d", second))"
+        givenTime = TimeInterval(hour * 3600 + minute * 60 + second)
     }
     
 }
