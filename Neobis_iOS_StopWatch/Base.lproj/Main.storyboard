@@ -55,6 +55,9 @@
                                             <imageReference key="image" image="stop.fill" catalog="system" symbolScale="large"/>
                                             <color key="baseForegroundColor" red="0.41176474089999998" green="0.73725497719999999" blue="0.89411771299999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="stopButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="z1z-m4-7vc"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nCv-Qi-2fT">
                                         <rect key="frame" x="89" y="0.0" width="57" height="57"/>
@@ -67,6 +70,9 @@
                                             <imageReference key="image" image="pause" catalog="system" symbolScale="large"/>
                                             <color key="baseForegroundColor" red="0.41176474089999998" green="0.73725497719999999" blue="0.89411771299999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="pauseButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5DV-kE-Cj8"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tI4-hl-VdO">
                                         <rect key="frame" x="178" y="0.0" width="57" height="57"/>
@@ -79,6 +85,9 @@
                                             <imageReference key="image" image="play.fill" catalog="system" symbolScale="large"/>
                                             <color key="baseForegroundColor" red="0.41176474089999998" green="0.73725497719999999" blue="0.89411771299999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="startButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iky-Nj-KU9"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -112,8 +121,8 @@
                         <outlet property="playButton" destination="tI4-hl-VdO" id="pzK-32-fPD"/>
                         <outlet property="stopButton" destination="hYY-2f-1aV" id="wFH-gj-MIK"/>
                         <outlet property="switchSegmentedControl" destination="Ysk-ic-yXN" id="3Se-h6-mON"/>
-                        <outlet property="timeLabel" destination="hDl-B6-Tn8" id="cPk-KY-wrw"/>
                         <outlet property="timePickerView" destination="i2e-67-V3C" id="QD4-i0-1Ww"/>
+                        <outlet property="timerLabel" destination="hDl-B6-Tn8" id="cPk-KY-wrw"/>
                         <outlet property="view" destination="Ysk-ic-yXN" id="ALF-SQ-Q2e"/>
                     </connections>
                 </viewController>
