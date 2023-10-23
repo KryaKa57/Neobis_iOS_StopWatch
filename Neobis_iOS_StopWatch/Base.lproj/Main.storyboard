@@ -17,9 +17,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="3u8-1v-ndn">
-                                <rect key="frame" x="183" y="125.5" width="48.5" height="53"/>
+                                <rect key="frame" x="183" y="130" width="48.5" height="48.5"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <imageReference key="image" image="stopwatch" catalog="system" symbolScale="large" variableValue="1"/>
+                                <imageReference key="image" image="timer" catalog="system" symbolScale="large" variableValue="1"/>
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="32" scale="large" weight="medium"/>
                             </imageView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Ysk-ic-yXN">
@@ -55,6 +55,12 @@
                                             <imageReference key="image" image="stop.fill" catalog="system" symbolScale="large"/>
                                             <color key="baseForegroundColor" red="0.41176474089999998" green="0.73725497719999999" blue="0.89411771299999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="16"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="stopButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="z1z-m4-7vc"/>
                                         </connections>
@@ -65,11 +71,21 @@
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="nCv-Qi-2fT" secondAttribute="height" multiplier="50:50" id="R1I-0a-0bV"/>
                                         </constraints>
+                                        <color key="tintColor" red="0.34137370560000002" green="0.74569195509999997" blue="0.2734552194" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain">
                                             <imageReference key="image" image="pause" catalog="system" symbolScale="large"/>
                                             <color key="baseForegroundColor" red="0.41176474089999998" green="0.73725497719999999" blue="0.89411771299999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="16"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                <integer key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="pauseButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5DV-kE-Cj8"/>
                                         </connections>
@@ -80,11 +96,21 @@
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="tI4-hl-VdO" secondAttribute="height" multiplier="50:50" id="uei-Zk-oYf"/>
                                         </constraints>
+                                        <color key="tintColor" red="0.41176474089999998" green="0.73725497719999999" blue="0.89411771299999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain">
                                             <imageReference key="image" image="play.fill" catalog="system" symbolScale="large"/>
-                                            <color key="baseForegroundColor" red="0.41176474089999998" green="0.73725497719999999" blue="0.89411771299999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <color key="baseForegroundColor" systemColor="tintColor"/>
                                         </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="16"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                <integer key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="startButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iky-Nj-KU9"/>
                                         </connections>
@@ -122,6 +148,7 @@
                         <outlet property="stopButton" destination="hYY-2f-1aV" id="wFH-gj-MIK"/>
                         <outlet property="switchSegmentedControl" destination="Ysk-ic-yXN" id="3Se-h6-mON"/>
                         <outlet property="timePickerView" destination="i2e-67-V3C" id="QD4-i0-1Ww"/>
+                        <outlet property="timerImageView" destination="3u8-1v-ndn" id="Rkg-s1-YGV"/>
                         <outlet property="timerLabel" destination="hDl-B6-Tn8" id="cPk-KY-wrw"/>
                         <outlet property="view" destination="Ysk-ic-yXN" id="ALF-SQ-Q2e"/>
                     </connections>
@@ -131,10 +158,14 @@
             <point key="canvasLocation" x="101.44927536231884" y="3.3482142857142856"/>
         </scene>
     </scenes>
+    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
         <image name="pause" catalog="system" width="88" height="128"/>
         <image name="play.fill" catalog="system" width="117" height="128"/>
         <image name="stop.fill" catalog="system" width="128" height="113"/>
-        <image name="stopwatch" catalog="system" width="121" height="128"/>
+        <image name="timer" catalog="system" width="128" height="123"/>
+        <systemColor name="tintColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>
