@@ -5,13 +5,14 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Timer View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Neobis_iOS_StopWatch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="TimerViewController" customModule="Neobis_iOS_StopWatch" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -146,7 +147,7 @@
                         <outlet property="pauseButton" destination="nCv-Qi-2fT" id="3mL-Ch-cFJ"/>
                         <outlet property="playButton" destination="tI4-hl-VdO" id="pzK-32-fPD"/>
                         <outlet property="stopButton" destination="hYY-2f-1aV" id="wFH-gj-MIK"/>
-                        <outlet property="switchSegmentedControl" destination="Ysk-ic-yXN" id="3Se-h6-mON"/>
+                        <outlet property="switchFunctionalitiesSegmentedControl" destination="Ysk-ic-yXN" id="3Se-h6-mON"/>
                         <outlet property="timePickerView" destination="i2e-67-V3C" id="QD4-i0-1Ww"/>
                         <outlet property="timerImageView" destination="3u8-1v-ndn" id="Rkg-s1-YGV"/>
                         <outlet property="timerLabel" destination="hDl-B6-Tn8" id="cPk-KY-wrw"/>

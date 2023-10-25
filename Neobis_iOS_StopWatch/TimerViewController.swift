@@ -11,18 +11,15 @@ enum Functionality {
     case Timer, StopWatch
 }
 
-class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class TimerViewController: UIViewController {
 
     @IBOutlet weak var timerImageView: UIImageView!
-    
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
-    
     @IBOutlet weak var timePickerView: UIPickerView!
     @IBOutlet weak var timerLabel: UILabel!
-    
-    @IBOutlet weak var switchSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var switchFunctionalitiesSegmentedControl: UISegmentedControl!
     
     var currentFunctionality = Functionality.Timer // Текущий функционал: Таймер или секундомер
     
@@ -41,6 +38,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         
         timePickerView.delegate = self
         timePickerView.dataSource = self
+        
     }
 
     @IBAction func startButtonTapped(_ sender: UIButton) {
@@ -129,12 +127,15 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
             pauseButton.backgroundColor = .black
         }
     }
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+}
+
+
+extension TimerViewController: UIPickerViewDataSource, UIPickerViewDelegate{
+    public func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 3
     }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if component == 0 {
             return 100
         } else {
@@ -142,11 +143,11 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         }
     }
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return String(row)
     }
     
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let hour = Int(pickerView.selectedRow(inComponent: 0))
         let minute = Int(pickerView.selectedRow(inComponent: 1))
         let second = Int(pickerView.selectedRow(inComponent: 2))
@@ -154,6 +155,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         timerLabel.text = "\(String(format: "%02d", hour)):\(String(format: "%02d", minute)):\(String(format: "%02d", second))"
         givenTime = TimeInterval(hour * 3600 + minute * 60 + second)
     }
-    
 }
 
+// Issues:
+// 1. Can't color tint of image in button

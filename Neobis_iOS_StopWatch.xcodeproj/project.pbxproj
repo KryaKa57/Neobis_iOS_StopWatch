@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		64CC56612AE1644B00CD13D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CC56602AE1644B00CD13D2 /* AppDelegate.swift */; };
 		64CC56632AE1644B00CD13D2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CC56622AE1644B00CD13D2 /* SceneDelegate.swift */; };
-		64CC56652AE1644B00CD13D2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CC56642AE1644B00CD13D2 /* ViewController.swift */; };
+		64CC56652AE1644B00CD13D2 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CC56642AE1644B00CD13D2 /* TimerViewController.swift */; };
 		64CC56682AE1644B00CD13D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64CC56662AE1644B00CD13D2 /* Main.storyboard */; };
 		64CC566A2AE1644C00CD13D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64CC56692AE1644C00CD13D2 /* Assets.xcassets */; };
 		64CC566D2AE1644C00CD13D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64CC566B2AE1644C00CD13D2 /* LaunchScreen.storyboard */; };
@@ -19,7 +19,7 @@
 		64CC565D2AE1644B00CD13D2 /* Neobis_iOS_StopWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Neobis_iOS_StopWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64CC56602AE1644B00CD13D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64CC56622AE1644B00CD13D2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		64CC56642AE1644B00CD13D2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		64CC56642AE1644B00CD13D2 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		64CC56672AE1644B00CD13D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		64CC56692AE1644C00CD13D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		64CC566C2AE1644C00CD13D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -58,7 +58,7 @@
 			children = (
 				64CC56602AE1644B00CD13D2 /* AppDelegate.swift */,
 				64CC56622AE1644B00CD13D2 /* SceneDelegate.swift */,
-				64CC56642AE1644B00CD13D2 /* ViewController.swift */,
+				64CC56642AE1644B00CD13D2 /* TimerViewController.swift */,
 				64CC56662AE1644B00CD13D2 /* Main.storyboard */,
 				64CC56692AE1644C00CD13D2 /* Assets.xcassets */,
 				64CC566B2AE1644C00CD13D2 /* LaunchScreen.storyboard */,
@@ -138,7 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64CC56652AE1644B00CD13D2 /* ViewController.swift in Sources */,
+				64CC56652AE1644B00CD13D2 /* TimerViewController.swift in Sources */,
 				64CC56612AE1644B00CD13D2 /* AppDelegate.swift in Sources */,
 				64CC56632AE1644B00CD13D2 /* SceneDelegate.swift in Sources */,
 			);
