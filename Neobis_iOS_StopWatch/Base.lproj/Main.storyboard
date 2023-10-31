@@ -5,7 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -48,13 +47,13 @@
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="hYY-2f-1aV" secondAttribute="height" multiplier="50:50" id="W0X-jd-J4G"/>
                                         </constraints>
+                                        <color key="tintColor" red="0.41176474089999998" green="0.73725497719999999" blue="0.89411771299999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="stop.fill" catalog="system">
                                             <color key="titleColor" red="0.41176474089999998" green="0.73725497719999999" blue="0.89411771299999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <buttonConfiguration key="configuration" style="plain">
                                             <imageReference key="image" image="stop.fill" catalog="system" symbolScale="large"/>
-                                            <color key="baseForegroundColor" red="0.41176474089999998" green="0.73725497719999999" blue="0.89411771299999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </buttonConfiguration>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -72,11 +71,10 @@
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="nCv-Qi-2fT" secondAttribute="height" multiplier="50:50" id="R1I-0a-0bV"/>
                                         </constraints>
-                                        <color key="tintColor" red="0.34137370560000002" green="0.74569195509999997" blue="0.2734552194" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="tintColor" red="0.41176474089999998" green="0.73725497719999999" blue="0.89411771299999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain">
                                             <imageReference key="image" image="pause" catalog="system" symbolScale="large"/>
-                                            <color key="baseForegroundColor" red="0.41176474089999998" green="0.73725497719999999" blue="0.89411771299999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </buttonConfiguration>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -101,7 +99,6 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain">
                                             <imageReference key="image" image="play.fill" catalog="system" symbolScale="large"/>
-                                            <color key="baseForegroundColor" systemColor="tintColor"/>
                                         </buttonConfiguration>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -165,8 +162,5 @@
         <image name="play.fill" catalog="system" width="117" height="128"/>
         <image name="stop.fill" catalog="system" width="128" height="113"/>
         <image name="timer" catalog="system" width="128" height="123"/>
-        <systemColor name="tintColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
     </resources>
 </document>

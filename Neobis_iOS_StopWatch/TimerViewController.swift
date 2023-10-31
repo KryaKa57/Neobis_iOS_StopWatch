@@ -7,12 +7,15 @@
 
 import UIKit
 
-enum Functionality {
-    case Timer, StopWatch
-}
 
 class TimerViewController: UIViewController {
-
+    enum State {
+        case timer, stopWatch
+    }
+    enum TimerStatus {
+        case started, paused, stopped
+    }
+    
     @IBOutlet weak var timerImageView: UIImageView!
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var pauseButton: UIButton!
@@ -21,62 +24,52 @@ class TimerViewController: UIViewController {
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var switchFunctionalitiesSegmentedControl: UISegmentedControl!
     
-    var currentFunctionality = Functionality.Timer // Текущий функционал: Таймер или секундомер
+    var currentFunctionality = State.timer // Текущий функционал: Таймер или секундомер
+    var currentStatus = TimerStatus.stopped // Текущий статус таймер: Запущено, в паузе или на стопе
+
+    var timer = Timer()
+    var executedTime = DateComponents() // Количество времени работы функционала
     
-    var timer: Timer!
-    
-    var startedTime: Date! // Дата и время начала записи времени
-    var timeOnRunning: DateComponents! // Количество времени работы функционала
-    
-    var isTimerRunning = false // Работает ли таймер
-    var isTimerPaused = false // На паузе ли таймер
-    
-    var givenTime: TimeInterval! = TimeInterval(0) // Заданное время секундомера
+    var startedTime = Date() // Дата и время начала записи времени (Таймер)
+    var givenTime = TimeInterval(0) // Заданное время (Секундомер)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         timePickerView.delegate = self
         timePickerView.dataSource = self
-        
     }
 
     @IBAction func startButtonTapped(_ sender: UIButton) {
-        if !isTimerRunning {
-            startedTime = isTimerPaused ? Calendar.current.date(byAdding: timeOnRunning, to: Date()) : Date()
+        if currentStatus != .started {
+            startedTime = Calendar.current.date(byAdding: executedTime, to: Date()) ?? Date()
             timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(UpdateTime), userInfo: nil, repeats: true)
-            isTimerRunning = true
-            isTimerPaused = false
-            
+            currentStatus = .started
             colorButtons()
-        }
-        
-        if currentFunctionality == .StopWatch {
-            timePickerView.isHidden = true
+            
+            if currentFunctionality == .stopWatch {
+                timePickerView.isHidden = true
+            }
         }
     }
     
     @IBAction func pauseButtonTapped(_ sender: UIButton) {
-        if isTimerRunning && !isTimerPaused{
-            timeOnRunning = Calendar.current.dateComponents([.day, .hour, .minute, .second], from: Date(), to: (startedTime))
+        if currentStatus == .started {
+            currentStatus = .paused
+            executedTime = Calendar.current.dateComponents([.day, .hour, .minute, .second], from: Date(), to: (startedTime))
             timer.invalidate()
-            isTimerPaused = true
-            isTimerRunning = false
-            
             colorButtons()
         }
-        
     }
     
     @IBAction func stopButtonTapped(_ sender: UIButton) {
         timer.invalidate()
-        isTimerRunning = false
-        isTimerPaused = false
-        timeOnRunning = nil
-        timerLabel.text = "00:00:00"
+        executedTime = DateComponents()
+        timerLabel.text = String.toTimeString(0, 0, 0)
+        currentStatus = .stopped
         colorButtons()
         
-        if currentFunctionality == .StopWatch {
+        if currentFunctionality == .stopWatch {
             timePickerView.isHidden = false
         }
     }
@@ -84,49 +77,49 @@ class TimerViewController: UIViewController {
     @objc func UpdateTime() {
         let userCalendar = Calendar.current
         let currentTime = Date()
-        
         let timeLeft = userCalendar.dateComponents([.hour, .minute, .second]
-                                                   , from: (currentFunctionality == .Timer ? startedTime : currentTime)
-                                                   , to: currentFunctionality == .Timer ? currentTime : startedTime + givenTime)
-        
+                                                   , from: (currentFunctionality == .timer ? startedTime : currentTime)
+                                                   , to: currentFunctionality == .timer ? currentTime : startedTime + givenTime)
         // Display Countdown
-        timerLabel.text = "\(String(format: "%02d",timeLeft.hour!)):\(String(format: "%02d",timeLeft.minute!)):\(String(format: "%02d",timeLeft.second!))"
+        timerLabel.text = String.toTimeString(timeLeft.hour ?? 0, timeLeft.minute ?? 0, timeLeft.second ?? 0)
         
-        if currentFunctionality == .StopWatch && timer != nil && timeLeft.hour == 0 && timeLeft.minute == 0 && timeLeft.second == 0 {
+        if currentFunctionality == .stopWatch && timeLeft.hour == 0 && timeLeft.minute == 0 && timeLeft.second == 0 {
             stopButtonTapped(stopButton)
         }
     }
     
     @IBAction func switchFuntionality(_ sender: Any) {
-        if (currentFunctionality == Functionality.Timer) {
-            if isTimerRunning || isTimerPaused {
-                stopButtonTapped(stopButton)
-            }
-            currentFunctionality = Functionality.StopWatch
+        if (currentFunctionality == State.timer) {
+            stopButtonTapped(stopButton) // Можно ли так?
+            currentFunctionality = State.stopWatch
             timePickerView.isHidden = false
             timerImageView.image = UIImage(systemName: "stopwatch")
         } else {
-            if isTimerRunning || isTimerPaused {
-                stopButtonTapped(stopButton)
-            }
-            currentFunctionality = Functionality.Timer
+            stopButtonTapped(stopButton)
+            currentFunctionality = State.timer
             timePickerView.isHidden = true
             timerImageView.image = UIImage(systemName: "timer")
         }
     }
     
     func colorButtons() {
-        if isTimerRunning {
-            playButton.backgroundColor = .white
-            pauseButton.backgroundColor = .black
-        } else if isTimerPaused {
-            playButton.backgroundColor = .black
-            pauseButton.backgroundColor = .white
-        } else {
-            playButton.backgroundColor = .black
-            pauseButton.backgroundColor = .black
+        playButton.changeButtonStyle(to: .normal)
+        pauseButton.changeButtonStyle(to: .normal)
+        
+        switch currentStatus {
+        case .started:
+            playButton.changeButtonStyle(to: .clicked)
+        case .paused:
+            pauseButton.changeButtonStyle(to: .clicked)
+        case .stopped:
+            break
         }
     }
+}
+
+
+enum ButtonStyle {
+    case clicked, normal
 }
 
 
@@ -152,10 +145,22 @@ extension TimerViewController: UIPickerViewDataSource, UIPickerViewDelegate{
         let minute = Int(pickerView.selectedRow(inComponent: 1))
         let second = Int(pickerView.selectedRow(inComponent: 2))
         
-        timerLabel.text = "\(String(format: "%02d", hour)):\(String(format: "%02d", minute)):\(String(format: "%02d", second))"
+        timerLabel.text = String.toTimeString(hour, minute, second)
         givenTime = TimeInterval(hour * 3600 + minute * 60 + second)
     }
 }
 
-// Issues:
-// 1. Can't color tint of image in button
+extension String {
+    static func toTimeString(_ hour: Int, _ minute: Int, _ second: Int) -> String {
+        return "\(String(format: "%02d", hour)):\(String(format: "%02d", minute)):\(String(format: "%02d", second))"
+    }
+}
+
+extension UIButton {
+    func changeButtonStyle(to buttonStyle: ButtonStyle) {
+        let customColor = UIColor.init(red: 105/255, green: 189/255, blue: 228/255, alpha: 1)
+        
+        self.backgroundColor = buttonStyle == .clicked ? customColor : .black
+        self.tintColor = buttonStyle == .clicked ? .black : customColor
+    }
+}
